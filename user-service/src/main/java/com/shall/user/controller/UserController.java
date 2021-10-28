@@ -3,6 +3,7 @@ package com.shall.user.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +29,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/{id}", produces = "application/json; charset=UTF-8", method = RequestMethod.GET)
-	public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId) {
+	public ResponseTemplateVO getUserWithDepartment(@PathVariable("id") Long userId,
+			@RequestHeader(value = "test-header", defaultValue = "test") String testHeader) {
 		log.info("UserController.getUserWithDepartment -> Start");
+		log.info("UserController.getUserWithDepartment -> Test Header: "+ testHeader);
 		return userService.getUserWithDepartment(userId);
 	}
 
