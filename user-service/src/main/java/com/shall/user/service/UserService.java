@@ -30,10 +30,14 @@ public class UserService {
 		log.info("UserService.getUserWithDepartment -> Start");
 		ResponseTemplateVO vo = new ResponseTemplateVO();
 		User user = userRepository.findByUserId(userId);
-
-		DepartmentVO department = restTemplate
-				.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(), DepartmentVO.class);
-
+		DepartmentVO department = null;
+		if(user != null) {
+			 department = restTemplate
+					.getForObject("http://DEPARTMENT-SERVICE/departments/" + user.getDepartmentId(), DepartmentVO.class);			
+		}else {
+			user = null;
+			department = null;
+		}
 		vo.setUser(user);
 		vo.setDepartment(department);
 

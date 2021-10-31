@@ -9,3 +9,8 @@ spring:
 hystrix:
   dashboard:
     proxy-stream-allow-list: "*"
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
