@@ -89,6 +89,33 @@ Before going through the steps, microservices to be started in the following ord
 
 **Running steps as follows:**
 
+There are two ways to run the microservices:
+
+  - Docker containers
+  - Executing java jar files
+
+**For docker way:** 
+We need to create the docker image first & to do so:
+
+Navigate to every microservice root directory and run the following command:
+```
+docker build -t service-registrty:latest .
+```
+Then to verify your image is successfully created run the following command:
+```
+docker images
+```
+If you find your image with the name **service-registry** or whatever the name was named then it's successfully created ;) 
+
+Now we need to run our created image in a container by running the following command
+
+```
+docker run -p 8761:8761 service-registrty
+```
+Please note that i chose port :8761 as this is the default port of service registry microservice to run on and i mapped it to the same port to be run over docker . You can change it to whatever available port you like as long as its not used by another container
+
+Once you see the microservice up and running 
+
 1- Run the following command:
 ```
 mvn clean install package
@@ -175,6 +202,3 @@ mvn spring-boot:run
   
 
      mvn site
-
-
-### 3- Dockerizing the application
