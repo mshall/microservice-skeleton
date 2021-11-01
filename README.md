@@ -28,6 +28,8 @@ Our application is doing the following
 - In-memory DB (**H2 DB**)
 - Lombok
 - Maven
+- Zipkin
+- Swagger API documentation
 - Docker
 
   
@@ -64,7 +66,19 @@ Project is using maven. so, you can download the project, run the following comm
 
 ### Steps
 
-  Before going through the steps, microservices to be started in the following order:
+First of all, make sure to install zipkin server on your local machine: 
+This can be done through docker commands:
+Make sure you have docker installed then:
+```
+docker pull openzipkin/zipkin
+```
+
+Then run the following command to start zipkin server: 
+```
+docker run -d -p 9411:9411 openzipkin/zipkin
+```
+
+Before going through the steps, microservices to be started in the following order:
 
 - Service Registry
 - Config Server
